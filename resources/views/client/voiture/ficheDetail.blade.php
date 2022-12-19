@@ -82,17 +82,12 @@
                         <p class='font-weight-bold'><span class='font-color-yellow'><i class="fa-solid fa-circle-question pr-xxsmall"></i></span>@lang('ficheDetail.question')</p>
                         <p class='text__body pt-2'>@lang('ficheDetail.question_text')</p>
                     </div>
-                    <!-- <div class="detail__information__commander__cta">
-                        <a href="" class='btn__commander font-weight-bold'>@lang('ficheDetail.commander')</a>
-                    </div> -->
-                    <!-- <div id="app"> -->
-                    <form action="{{route('panier.store')}}" method="post">
+                    <form action="{{route('panier.store', $voiture->id)}}" method="post">
                         @csrf
                         <input type="hidden" name="voiture_id" id="voiture_id" value="{{$voiture->id}}">
                         <input type="hidden" name="test" id="test" value="test">
                         <btnajouter></btnajouter>
                     </form>
-                    <!-- </div> -->
                 </div>
             </div>
         </div>

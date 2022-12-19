@@ -52,6 +52,7 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
 
 // PAGE FICHE VOITURE
     Route::get('/catalogue/voiture/vo-{voiture}', [VoitureController::class, 'show'])->name('voiture.show');
+    Route::post('/catalogue/voiture/vo-{voiture}', [PanierItemController::class, 'store'])->name('panier.store');
 
 //PAGE MES COMMANDE
     Route::get('/mes-commandes', [CommandeController::class, 'index'])->name('commande.index')->middleware('auth');
@@ -100,9 +101,8 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
 
 // PAGE PANIER
     Route::get('/panier', [PanierItemController::class, 'index'])->name('panier.index');
-    Route::post('/panier', [PanierItemController::class, 'store'])->name('panier.store');
     Route::get('/panier/{panierItem}', [PanierItemController::class, 'destroy'])->name('panier.suppression');
-
+    Route::post('/panier', [CommandeController::class, 'store'])->name('commande.store');
 
 // Affiche la facture pdf
     Route::get('/facture/PDF/{facture}', [CommandeController::class, 'facturePdf'])->name('facture.pdf');
