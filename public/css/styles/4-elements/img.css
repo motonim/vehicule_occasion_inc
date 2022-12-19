@@ -1,0 +1,21 @@
+/*------------------------------------*\
+  img / elements
+\*------------------------------------*/
+
+img {
+  width: 100%;
+}
+
+.slider img {
+  margin: 0 15px;
+}
+
+.img__apropos {
+  border-radius: 10px;
+}
+
+@media screen and (min-width:768px) {
+  .img__apropos {
+    width: 75%;
+  }
+}

@@ -1,0 +1,19 @@
+/*------------------------------------*\
+  message / elements
+\*------------------------------------*/
+
+.msg-success {
+  color: green;
+  font-weight: 300;
+  font-family: var(--font-primary);
+  padding-top: var(--space-basis);
+  display: block;
+}
+
+.msg-error {
+  color: red;
+  font-weight: 300;
+  font-family: var(--font-primary);
+  padding-top: var(--space-basis);
+  display: block;
+}

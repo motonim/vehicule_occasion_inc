@@ -1,0 +1,33 @@
+/*------------------------------------*\
+  text / elements
+\*------------------------------------*/
+
+.text__bold {
+      font-weight: 600;
+}
+
+.text__center {
+  text-align: center;
+}
+
+.text__body {
+  line-height: 2;
+}
+
+.text-avant-768px {
+  display: block;
+}
+
+@media screen and (min-width:768px) {
+  .text-avant-768px {
+    display: none;
+  }
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-bold {
+  font-weight: bold;
+}

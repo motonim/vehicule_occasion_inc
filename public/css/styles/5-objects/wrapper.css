@@ -1,0 +1,14 @@
+/*------------------------------------*\
+  wrapper / objects
+\*------------------------------------*/
+
+
+.wrapper {
+    max-width: 1484px;
+    padding: 0 6vw;
+    margin: 0 auto;
+}
+
+.wrapper--narrow {
+  padding: 0 8vw;
+}

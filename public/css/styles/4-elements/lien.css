@@ -1,0 +1,19 @@
+/*------------------------------------*\
+  lien / elements
+\*------------------------------------*/
+
+
+a {
+    color: inherit;
+    font-family: var(--font-primary);
+    text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.panier__modification {
+  font-weight: bold;
+  text-decoration: underline;
+}

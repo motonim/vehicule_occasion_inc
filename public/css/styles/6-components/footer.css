@@ -1,0 +1,165 @@
+/*------------------------------------*\
+  footer / components
+\*------------------------------------*/
+
+.footer__principal {
+  background-color: var(--color-darker-black);
+  text-align: center;
+  padding: var(--space-medium) 0;
+}
+
+.footer__contact-info {
+  display: none;
+}
+
+
+.footer__politiques {
+  background-color: var(--color-black);
+  text-align: center;
+  padding: var(--space-small) 0;
+  font-size: .8rem;
+}
+
+.footer__social {
+  padding: 1.5rem 0;
+}
+
+.footer__langues {
+  padding-top: 1rem;
+}
+
+.footer__titre {
+  font-family: var(--font-secondary);
+  font-size: 1.25rem;
+}
+
+.footer__infolettre__titre {
+  margin-top: 30px;
+}
+
+.footer__infolettre__body {
+  width: 80%;
+  margin: 10px auto;
+  text-align: left;
+}
+
+.footer__infolettre__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__infolettre__input {
+  padding: 10px;
+  height: 40px;
+  width: 70%;
+  border: 1px solid var(--color-gray);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.footer__infolettre__btn {
+  padding: 10px;
+  width: 10%;
+  height: 40px;
+  color: var(--color-primary);
+  border-radius: 10px;
+  border: 1px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.footer__brand-logo-img {
+  max-width: 150px;
+}
+
+@media screen and (min-width:768px) {
+  .footer__principal__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer__logos {
+    width: 30%;
+    text-align: left;
+    display: grid;
+    align-content: space-between;
+  }
+
+  .footer__brand-logo {
+    display: inline-block;
+  }
+
+  .footer__brand-logo-img {
+    width:70%;
+  }
+
+    
+  .footer__social {
+    padding: 0;
+  }
+
+  .footer__menu {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer__contact-info {
+    display: block;
+  }
+  .footer__menu__liens {
+    width: 45%;
+  }
+
+    
+  .footer__langues {
+    padding-top: 0;
+  }
+
+  .footer__infolettre {
+    width: 45%;
+  }
+
+    
+  .footer__infolettre__titre {
+    margin-top: 1rem;
+  }
+
+  .footer__infolettre__body {
+    width: 100%;
+  }
+
+  .footer__infolettre__input {
+    width: 80%;
+  }
+  .footer__infolettre__btn {
+    width: 20%;
+    margin-left: 5px;
+  }
+
+  .footer__politiques {
+    padding: 15px 0;
+  }
+  .footer__politiques ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer__politiques__liens {
+    display: flex;
+  }
+
+  .footer__politiques__liens li + li {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (min-width:992px) {
+  .footer__brand-logo-img {
+    width: 50%;
+  }
+}

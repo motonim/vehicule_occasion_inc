@@ -1,0 +1,12 @@
+/*------------------------------------*\
+  variables / settings
+\*------------------------------------*/
+
+ 
+
+:root {
+  --space-basis: .75vw;
+  --space-small: calc(var(--space-basis) * 2);
+  --space-medium: calc(var(--space-basis) * 4);
+  --space-large: calc(var(--space-basis) * 8);
+}

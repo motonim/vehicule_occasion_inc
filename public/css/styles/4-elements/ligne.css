@@ -1,0 +1,35 @@
+/*------------------------------------*\
+  ligne / elements
+\*------------------------------------*/
+
+
+.ligne {
+  height: .5px;
+  background-color: var(--color-gray);
+  width: 20%;
+}
+
+
+.ligne--yellow {
+  height: 3px;
+  background-color: var(--color-primary);
+  width: 60%;
+  margin: 10px auto;
+}
+
+@media screen and (min-width:768px) {
+  .ligne--yellow{
+     margin: 10px 0;
+     width: 80%;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .ligne--yellow{
+     width: 60%;
+  }
+}
+
+.line-height-base {
+  line-height: 1.2;
+}

@@ -1,0 +1,36 @@
+/*------------------------------------*\
+  tri / components
+\*------------------------------------*/
+
+.trier {
+   border: 1px solid var(--color-primary);
+   border-radius: 5px;
+   position: relative;
+}
+
+.trier__select {
+   /* for Firefox */
+   -moz-appearance: none;
+   /* for Chrome */
+   -webkit-appearance: none;
+   background: transparent;
+   color: white;
+   border: none;
+   padding: 5px 30px 5px 15px;
+
+}
+
+.trier__select::-ms-expand {
+   display: none;
+}
+
+.trier__desktop {
+   display: none;
+}
+
+.trier__arrow {
+   pointer-events: none;
+   position: absolute;
+   top: 15%;
+   right: 5%;
+}

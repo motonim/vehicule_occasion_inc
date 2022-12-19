@@ -1,0 +1,44 @@
+/*------------------------------------*\
+  slick / components
+\*------------------------------------*/
+
+.carousel {
+  position: relative;
+  height: 100%;
+}
+
+.slick-prev {
+  position: absolute;
+  top: 40%;
+  left: 5%;
+  z-index: 1000;
+}
+
+.slick-prev-accueil {
+ color: var(--color-gray);
+ height: 60px;
+ width: 60px;
+ z-index: 1000;
+}
+
+.slick-next {
+  position: absolute;
+  top:40%;
+  right: 5%;
+  z-index:1000
+}
+
+.slick-next-accueil {
+ color: var(--color-gray);
+ height: 60px;
+ width: 60px;
+ z-index: 1000;
+}
+
+.slick-prev-accueil:hover, .slick-next-accueil:hover {
+ color: var(--color-primary);
+}
+
+.slick-list {
+  max-height: 500px;
+}

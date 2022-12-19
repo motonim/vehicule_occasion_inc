@@ -1,0 +1,100 @@
+/*------------------------------------*\
+  hero / components
+\*------------------------------------*/
+
+.hero {
+   background-image: url(../../../assets/img/accueil-v2.png);
+   background-position: bottom 70px right;
+   background-size: 175%;
+   background-repeat: no-repeat;
+   min-height: 400px;
+   display: flex;
+   justify-content: center;
+   align-items: flex-end;
+
+   margin-bottom: 4em;
+}
+
+.hero__container {
+   padding-top: 2em;
+   justify-content: center;
+   flex-direction: column;
+}
+
+@media screen and (min-width:515px) {
+   .hero {
+      background-position: bottom 30px right;
+      height: 450px;
+   }
+}
+
+
+@media screen and (min-width:768px) {
+
+   .hero {
+      background-position: bottom 40px right;
+      background-size: 110%;
+      height: 500px;
+      align-items: center;
+   }
+
+   .hero__container {
+      width: 55%;
+      justify-content: flex-start;
+   }
+}
+
+@media screen and (min-width:1024px) {
+
+   .hero {
+      background-position: bottom 10px right;
+      height: 600px;
+   }
+
+   .hero__container {
+      padding-top: 0;
+   }
+}
+
+@media screen and (min-width:1200px) {
+
+   .hero {
+      background-position: right;
+   }
+
+}
+
+
+.hero__text--top {
+   font-family: var(--font-secondary);
+   font-size: 1.75rem;
+   text-transform: uppercase;
+   font-weight: bold;
+   text-align: center;
+
+}
+
+.hero__text--center {
+   font-family: var(--font-secondary);
+   font-size: 2rem;
+   text-transform: uppercase;
+   font-weight: bold;
+   text-align: center;
+   margin-top: -5px;
+
+}
+
+.hero__text--description {
+   text-align: center;
+}
+
+@media screen and (min-width:768px) {
+   .hero__text--top, .hero__text--center, .hero__text--description {
+      text-align: left;
+      display: block;
+   }
+
+   .hero__text--top {
+      padding-top: 0;
+   }
+}

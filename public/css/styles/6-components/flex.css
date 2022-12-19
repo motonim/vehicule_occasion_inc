@@ -1,0 +1,46 @@
+/*------------------------------------*\
+  flex / components
+\*------------------------------------*/
+
+.flex__custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex__custom li+li {
+  margin-left: 20px;
+}
+
+@media screen and (min-width:992px) {
+.flex__custom {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.flex__custom li+li {
+  margin-left: 0;
+}
+}
+
+.flex--column {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 100%;
+}
+
+.flex--center {
+align-items: center;
+}
+
+.align-content-spcae-between {
+align-content: space-between;
+}
+
+@media screen and (min-width:768px) {
+.flex-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}
+}

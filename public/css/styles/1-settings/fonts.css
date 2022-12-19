@@ -1,0 +1,39 @@
+/*------------------------------------*\
+  fonts / settings
+\*------------------------------------*/
+
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Oswald', sans-serif;
+
+  --font-size-default: 16px;
+  --font-weight-default: 300;
+  --font-weight-medium: 400;
+  --font-weight-heavy: 600;
+  --font-weight-bold: 700;
+
+  --letter-spacing-large: 0.02em;
+  --letter-spacing-xlarge: 0.08em;
+
+  --line-height-default: 1;
+  --line-height-small: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-medium: 1.6;
+  --line-height-large: 1.8;
+}
+
+.font--secondary {
+  font-family: var(--font-secondary);
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.font-color-grey {
+  color: var(--color-gray) !important;
+}
+
+.font-color-yellow {
+  color: var(--color-primary);
+}

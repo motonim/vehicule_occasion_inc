@@ -1,0 +1,96 @@
+/*------------------------------------*\
+  detail / components
+\*------------------------------------*/
+
+
+.detail__id {
+   display: none;
+}
+
+@media screen and (min-width:768px) {
+
+   .detail__id {
+      display: inline-block;
+   }
+}
+
+.detail__information__commander {
+   margin-top: var(--space-large);
+}
+
+
+.detail__information__commander div+div {
+   margin-top: var(--space-small);
+}
+
+.detail__information__commander__cta {
+   text-align: center;
+}
+
+@media screen and (min-width:768px) {
+
+   .detail__information {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .detail__information__vehicule {
+      width: 50%;
+   }
+
+   .detail__information__commander {
+      margin-top: 0;
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+   }
+
+   .detail__information__commander div+div {
+      margin-top: 0
+   }
+}
+
+
+.detail__information__vehicule__title {
+   text-transform: uppercase;
+}
+
+.detail__information__vehicule .row .col {
+   padding-left: 0;
+}
+
+.detail__service-client + .detail__service-client {
+   margin-top: var(--space-large);
+}
+
+@media screen and (min-width:768px) {
+   .detail__service-client {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   .detail__service-client-img {
+      width: 60%;
+   }
+
+   .detail__service-client-texte {
+      width: 35%;
+   }
+
+   .detail__service-client:nth-child(2) {
+      flex-direction: row-reverse;
+      margin-top: -10px;
+      padding-bottom: var(--space-small);
+   }
+}
+
+@media screen and (min-width:992px) {
+   .detail__service-client:nth-child(1) {
+      margin-top: 4rem;
+   }
+   .detail__service-client:nth-child(2) {
+      margin-bottom: 3rem;
+   }
+}

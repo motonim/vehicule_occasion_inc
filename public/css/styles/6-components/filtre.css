@@ -1,0 +1,83 @@
+/*------------------------------------*\
+  flitre / components
+\*------------------------------------*/
+
+.filtre__desktop {
+   display: none;
+}
+
+.filtre__mobile {
+   background-color: var(--color-black);
+}
+
+@media screen and (min-width:992px) {
+   .filtre__mobile, .filtre__mobile__titre {
+      display: none;
+   }
+
+   .filtre__desktop {
+      display: block;
+      width: 25%;
+      height: 100%;
+   }
+}
+
+.filtre__mobile>div + div {
+   border-top: 1px solid rgba(153, 153, 153, 0.25);
+}
+
+.filtre__desktop>div {
+   border-top: 1px solid rgba(153, 153, 153, 0.25);
+}
+
+.filtre__mobile__titre, .filtre__titre {
+   font-family: var(--font-secondary);
+   font-weight: bold;
+}
+
+.filtre__titre {
+   font-size: 1.25rem;
+}
+
+.filtre__desktop__titre {
+   font-family: var(--font-secondary);
+   font-weight: bold;
+   display: none;
+}
+
+@media screen and (min-width:992px) {
+
+   .filtre__desktop__titre {
+      display: block;
+   }
+
+}
+
+.filtre__btn__voir-plus, .filtre__desktop__btn__voir-plus {
+   width: fit-content;
+   display: block;
+   z-index: 1;
+   position: relative;
+   transition: all .3s;
+   cursor: pointer;
+}
+
+.filtre__btn__voir-plus:hover, .filtre__desktop__btn__voir-plus:hover {
+   background-color: var(--color-primary);
+}
+
+
+
+
+.filtre__marque__plus, .filtre__desktop__marque__plus {
+   display: block;
+   opacity: 0;
+   height: 0;
+   transition: all .3s;
+}
+
+.filtre__marque__plus--open, .filtre__desktop__marque__plus--open {
+   display: block;
+   opacity: 1;
+   height: 100%;
+}

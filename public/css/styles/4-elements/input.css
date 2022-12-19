@@ -1,0 +1,62 @@
+/*------------------------------------*\
+  input / elements
+\*------------------------------------*/
+
+
+input[type='submit'] {
+   border: none;
+   cursor: pointer;
+}
+
+
+input[type="radio"]{
+display: none;
+}
+
+#pmlivraison:checked:checked ~ .pmlivraison,
+#pmmagasin:checked:checked ~ .pmmagasin,
+#reserver:checked:checked ~ .reserver{
+border-color: var(--color-primary);
+background: var(--color-primary);
+}
+#pmlivraison:checked:checked ~ .pmlivraison .btn__radio__dot,
+#pmmagasin:checked:checked ~ .pmmagasin .btn__radio__dot,
+#reserver:checked:checked ~ .reserver .btn__radio__dot{
+background: #fff;
+}
+#pmlivraison:checked:checked ~ .pmlivraison .btn__radio__dot::before,
+#pmmagasin:checked:checked ~ .pmmagasin .btn__radio__dot::before,
+#reserver:checked:checked ~ .reserver .btn__radio__dot::before{
+opacity: 1;
+transform: scale(1);
+}
+.btn__radio__option span{
+font-size: 1rem;
+color: #808080;
+}
+#pmlivraison:checked:checked ~ .pmlivraison span,
+#pmmagasin:checked:checked ~ .pmmagasin span,
+#reserver:checked:checked ~ .reserver span{
+color: #fff;
+}
+
+
+/* input type = file  */
+
+[type="file"] {
+/* Style the color of the message that says 'No file chosen' */
+   color: #878787;
+}
+[type="file"]::-webkit-file-upload-button {
+   background: var(--color-primary);
+   border: 2px solid var(--color-primary);
+   border-radius: 4px;
+   color: #fff;
+   cursor: pointer;
+   font-size: 12px;
+   outline: none;
+   padding: 10px 25px;
+   text-transform: uppercase;
+   transition: all 1s ease;
+   margin-right: 1em;
+}

@@ -1,0 +1,39 @@
+/*------------------------------------*\
+  bg / objects
+\*------------------------------------*/
+
+.bg__accueil-contactez {
+  background-image: url(../../../assets/img/accueil-contactez.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200%;
+}
+
+@media screen and (min-width:576px) {
+  .bg__accueil-contactez {
+    background-size: 125%;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .bg__accueil-contactez {
+    background-size: 100%;
+  }
+}
+
+.bg__contactez-info {
+  background-color: var(--color-darker-black);
+  border-radius: 10px;
+  margin-top: 2em;
+  padding: 2em 2em 2em 3em;
+}
+
+@media screen and (min-width:768px) {
+  .bg__contactez-info {
+    margin-top: 0;
+  }
+}
+
+.vo_bg-primary {
+    background-color: #1c1c1c;
+}

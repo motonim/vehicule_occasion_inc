@@ -1,0 +1,126 @@
+/*------------------------------------*\
+  btn / elements
+\*------------------------------------*/
+
+button {
+  border: none;
+  background: none;
+}
+
+.btn-arrow {
+  background-color: var(--color-gray);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  opacity: 50%;
+  transition: opacity .3s ease-in-out;
+}
+
+.btn-arrow:hover {
+  opacity: 1;
+}
+
+.btn__commander, .btn__connexion, .btn__inscription {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+@media screen and (min-width:768px) {
+  .btn__commander {
+    width: 100%;
+  }
+}
+
+.btn__soumettre, .btn__caisse__reserver--desktop, .btn__caisse__reserver--mobile {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+
+  transition: opacity .3s ease-in-out;
+}
+
+.btn__soumettre:hover, .btn__caisse__reserver--desktop:hover, .btn__caisse__reserver--mobile:hover  {
+  opacity: .5;
+}
+
+.btn__caisse__reserver--desktop { 
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .btn__caisse__reserver--mobile {
+    display: none;
+  }
+
+  .btn__caisse__reserver--desktop {
+    display: block;
+  }
+}
+
+.btn__border {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  padding: 5px 15px;
+  transition: all .3s ease-in-out;
+}
+
+.btn__border:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn__border:hover .font-color-yellow {
+  color: white;
+}
+
+.btn__radio__option {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 1em;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+
+.btn__radio__dot {
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 10px;
+}
+
+.btn__radio__dot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+
+.btn_disabled {
+  background-color: var(--color-gray);
+}

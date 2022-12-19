@@ -1,0 +1,41 @@
+/*------------------------------------*\
+  nav / elements
+\*------------------------------------*/
+
+
+@media screen and (max-width:991px) {
+
+  .vo-menu {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background-color: var(--color-black);
+  }
+
+  .vo-navbar {
+    text-align: center;
+  }
+
+  .vo-navbar .langues {
+    justify-content: center;
+  }
+
+  .vo-navbar .langues li + li {
+    margin-left: 10px;
+  }
+
+  .nav__connexion {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width:992px) {
+    
+  .nav__vo__left__item{
+    margin-left: 30px;
+  }
+
+  .vo-admin-menu {
+    /* width: 25%; */
+  }
+}

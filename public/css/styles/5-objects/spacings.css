@@ -1,0 +1,182 @@
+/*------------------------------------*\
+  spacings / objects
+\*------------------------------------*/
+
+
+.py-xxsmall {
+    padding: var(--space-base) 0;
+}
+
+.py-xsmall {
+    padding: var(--space-xsmall) 0;
+}
+
+.py-small {
+    padding: var(--space-small) 0;
+}
+
+.py-medium {
+    padding: var(--space-medium) 0;
+}
+
+.py-large {
+    padding: var(--space-large) 0;
+}
+
+.py-xlarge {
+    padding: var(--space-xlarge) 0;
+}
+
+/* padding bottom */
+
+.pb-xsmall {
+    padding-bottom: var(--space-xsmall);
+}
+
+.pb-small {
+    padding-bottom: var(--space-small);
+}
+
+.pb-medium {
+    padding-bottom: var(--space-medium);
+}
+
+.pb-large {
+    padding-bottom: var(--space-large);
+}
+
+.pb-xlarge {
+    padding-bottom: var(--space-xlarge);
+}
+
+/* padding top */
+
+.pt-xsmall {
+    padding-top: var(--space-xsmall);
+}
+
+.pt-small {
+    padding-top: var(--space-small);
+}
+
+.pt-medium {
+    padding-top: var(--space-medium);
+}
+
+.pt-large {
+    padding-top: var(--space-large);
+}
+
+.pt-xlarge {
+    padding-top: var(--space-xlarge);
+}
+
+/*  padding right  */
+.pr-xxsmall {
+    padding-right: var(--space-base);
+}
+
+.pr-xsmall {
+    padding-right: var(--space-xsmall);
+}
+
+.pr-small {
+    padding-right: var(--space-small);
+}
+
+.pr-medium {
+    padding-right: var(--space-medium);
+}
+
+.pr-large {
+    padding-right: var(--space-large);
+}
+
+.pr-xlarge {
+    padding-right: var(--space-xlarge);
+}
+
+/* zero margin */
+.pr-0 {
+    padding-right: 0;
+}
+
+.px-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* margin top and bottom */
+
+.my-xsmall {
+    margin: var(--space-xsmall) 0;
+}
+
+.my-small {
+    margin: var(--space-small) 0;
+}
+
+.my-medium {
+    margin: var(--space-medium) 0;
+}
+
+.my-large {
+    margin: var(--space-large) 0;
+}
+
+.my-xlarge {
+    margin: var(--space-xlarge) 0;
+}
+
+
+
+/* margin top and bottom */
+
+.mt-xxsmall {
+    margin-top: var(--space-base);
+}
+
+.mt-xsmall {
+    margin-top: var(--space-xsmall);
+}
+
+.mt-small {
+    margin-top: var(--space-small);
+}
+
+.mt-medium {
+    margin-top: var(--space-medium);
+}
+
+.mt-large {
+    margin-top: var(--space-large);
+}
+
+.mt-xlarge {
+    margin-top: var(--space-xlarge);
+}
+
+.mt-avant-768 {
+    margin-top: 15px;
+}
+
+@media screen and (min-width:768px) {
+    
+    .mt-avant-768 {
+        margin-top: 0;
+    }
+}
+
+.my-avant-768 {
+    margin: 15px 0;
+}
+
+@media screen and (min-width:768px) {
+    .my-avant-768 {
+        margin: 0;
+    }
+}
+
+.height-100vh {
+    height: 100vh;
+}

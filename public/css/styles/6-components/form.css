@@ -1,0 +1,68 @@
+/*------------------------------------*\
+  form / components
+\*------------------------------------*/
+
+.form__accueil {
+  background-color: var(--color-black);
+  padding: 2.5em;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.form__contactez {
+  background-color: var(--color-black);
+  padding-top: 2em;
+  text-align: center;
+}
+
+.form__accueil__titre {
+  width: 70%;
+  margin: 10px auto 20px auto;
+}
+
+@media screen and (min-width:768px) {
+  .form__accueil__titre {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .form__accueil__titre {
+    width: 70%;
+  }
+}
+
+.form__accueil__input {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-gray);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  width: 100%;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+.form__accueil__input + .form__accueil__input {
+  margin-top: 10px;
+}
+
+.form__connexion__input, .form__inscription__input {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-gray);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  width: 100%;
+}

@@ -1,0 +1,17 @@
+/*------------------------------------*\
+  list / elements
+\*------------------------------------*/
+
+
+ul,
+ol {
+    color: inherit;
+    font-family: var(--font-primary);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-style-circle {
+  list-style-type: circle;
+}
