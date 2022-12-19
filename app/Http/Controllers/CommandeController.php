@@ -109,7 +109,8 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        print_r($request->nom);
+        die();
     }
 
     /**
@@ -290,47 +291,4 @@ class CommandeController extends Controller
         return redirect('/mes-commandes');
     }
 
-
-    public function jaeriPanier() {
-        if(Auth::check()) {
-            $userId = Auth::user()->id;
-
-            $commande = Commande::select('id')
-            ->where('user_id', '=', $userId)
-            ->orderby('id', 'ASC')
-            ->get();
-
-            if ($commande) {
-                $commandeId = $commande[0]['id'];
-
-                $voitures = Voiture::select()
-                ->where('commande_id', '=', $commandeId)
-                ->orderby('id', 'ASC')
-                ->get();
-                // var_dump($voiture);
-
-                // var_dump($voitures[0]['user_id']);
-                // die();
-
-                // $modele_marque = new Modele;
-                // $modele_marque = $modele_marque->selectModele($voiture->modele_id);
-
-                // $modele = $modele_marque[0]['modele_nom'];
-                // $marque = $modele_marque[0]['marque_nom'];
-
-                return view('client/commande.index', ['voitures' => $voitures]);
-            }
-            else {
-
-                return view('client/commande.index');
-
-            }
-        }
-
-        else {
-
-            return view('auth.connexion');
-
-        }
-    }
 }
