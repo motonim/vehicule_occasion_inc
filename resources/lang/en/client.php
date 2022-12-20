@@ -15,6 +15,7 @@ return[
     'annuler' => 'Cancel my order',
     'mode_paiement' => 'Payment method',
     'telecharger_facture' => 'Download invoice',
+    'votre_compte' => 'Your account',
 
     'message_aucune_commande' => "No order to display at the moment.",
 

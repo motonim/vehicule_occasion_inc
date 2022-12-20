@@ -14,6 +14,7 @@ return[
     'finaliser' => 'Finaliser ma commande',
     'annuler' => 'Annuler ma commande',
     'telecharger_facture' => 'Télécharger la facture',
+    'votre_compte' => 'Votre compte',
 
     'message_aucune_commande' => "Aucune commande à afficher pour le moment.",
 

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<div class="container p-5 col-12 col-lg-10 min-vh-100">
-    <nav aria-label="breadcrumb">
+<div class="container py-5 min-vh-100">
+    <nav>
         <ol class="breadcrumb vo_bg-primary pl-0">
-            <li class="breadcrumb-item"><a href="{{route('accueil')}}">VO</a></li>
-            <li class="breadcrumb-item"><a href="#">{{ auth()->user()->nomUsager }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@lang('client.list_commande')</li>
+            <li class="p-3 mr-3 border--gray border-radius__5px"><a href="#">@lang('client.votre_compte')</a></li>
+            <!-- <li class="pr-3"><a href="#">{{ auth()->user()->nomUsager }}</a></li> -->
+            <li class="p-3 border--gray border-radius__5px" aria-current="page">@lang('client.list_commande')</li>
         </ol>
     </nav>
 
