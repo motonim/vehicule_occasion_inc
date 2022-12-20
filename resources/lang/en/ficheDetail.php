@@ -7,6 +7,7 @@ return[
     'question' => 'Do you have any questions?',
     'question_text' => 'Contact us at info@vo.ca or on our phone 514-254-7131.',
     'commander' => 'ADD TO CART',
+    'incart' => 'In cart',
 
     //Pub 
 

@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 use App\Http\Resources\VoitureResource;
 use Illuminate\Validation\Rules\Exists;
@@ -207,8 +207,9 @@ class VoitureController extends Controller
         $image = new Image;
         $image = $image->selectImage($voiture->id);
 
+        $cart = Cart::content();
 
-        return view('client/voiture.ficheDetail', ['transmissions' =>  $transmission, 'carrosseries' => $carrosserie, 'tractions' => $traction, 'carburants' => $carburant, 'modele' => $modele, 'marque' => $marque, 'voiture' => $voiture, 'images' => $image]);
+        return view('client/voiture.ficheDetail', ['transmissions' =>  $transmission, 'carrosseries' => $carrosserie, 'tractions' => $traction, 'carburants' => $carburant, 'modele' => $modele, 'marque' => $marque, 'voiture' => $voiture, 'images' => $image, 'cart' => $cart]);
     }
 
     /**

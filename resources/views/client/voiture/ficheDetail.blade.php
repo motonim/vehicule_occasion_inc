@@ -86,6 +86,9 @@
                         <p class='font-weight-bold'><span class='font-color-yellow'><i class="fa-solid fa-circle-question pr-xxsmall"></i></span>@lang('ficheDetail.question')</p>
                         <p class='text__body pt-2'>@lang('ficheDetail.question_text')</p>
                     </div>
+                    @if ($cart->where('id', $voiture->id)->count())
+                    <div class="border--gray border-radius__5px p-2 text-center" disabled>@lang('ficheDetail.incart')</div>    
+                    @else
                     <form action="{{route('panier.store', $voiture->id)}}" method="post">
                         @csrf
                         <input type="hidden" name="quantite" value="1">
@@ -93,6 +96,7 @@
                         <input type="hidden" name="test" id="test" value="test">
                         <btnajouter></btnajouter>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>
