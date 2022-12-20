@@ -21,6 +21,9 @@
     <!-- Slick css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Livewire -->
+    @livewireStyles
+
     <title>VO inc.</title>
 </head>
 @php $locale = session()->get('locale'); @endphp
@@ -182,6 +185,9 @@
     <script src="{{asset('js/slick.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
+
+    <!-- LivewireScript -->
+    @livewireScripts
 
     <!-- VueJs script -->
     <!-- @yield('scripts') -->
