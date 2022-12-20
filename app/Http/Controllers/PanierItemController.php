@@ -9,6 +9,7 @@ use App\Models\Modele;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class PanierItemController extends Controller
 {
@@ -70,30 +71,58 @@ class PanierItemController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::check()) {
-            $userId = Auth::user()->id;
+        $voiture = Voiture::findOrFail($request->input('voiture_id'));
+        // print_r($voiture);
+        // echo "<br>";
+        // echo "<br>";
 
-            $panierItem = new PanierItem();
-            $panierItem->user_id = $userId;
-            $panierItem->voiture_id = $request->voiture_id;
+        $modele_marque = new Modele;
+        $modele_marque = $modele_marque->selectModele($voiture->modele_id);
 
-            // if panierItem is already stored in the database, then don't push it to the database
-            $check = PanierItem::where('user_id', '=', $userId)
-                                ->where('voiture_id', '=', $request->voiture_id);
+        $modele = $modele_marque[0]['modele_nom'];
+        $marque = $modele_marque[0]['marque_nom'];
+        // print_r($modele);
+        // print_r($marque);
+        $voiture_nom = $marque . ' ' . $modele;
+        // print_r($voiture->prixAchat);
+        $voiture_prix = (float)$voiture->prixAchat;
+        // print_r(is_numeric($voiture_prix) ? 'yes' : 'no');
+        // die();
+        Cart::add(
+            $voiture->id, 
+            $voiture_nom, 
+            $request->input('quantite'),
+            $voiture_prix
+        );
+        return redirect()->back()->with('message', 'Ajouté');
 
-            if($check->count() > 0) {
-                return redirect()->route('panier.index');
-            }
-            else {
 
-                $panierItem->save();
 
-                return redirect()->route('panier.index');
-            }
-        }
-        else {
-            return view('auth.connexion');
-        }
+        
+        // if(Auth::check()) {
+        //     $userId = Auth::user()->id;
+
+        //     $panierItem = new PanierItem();
+        //     $panierItem->user_id = $userId;
+        //     $panierItem->voiture_id = $request->voiture_id;
+
+        //     // if panierItem is already stored in the database, then don't push it to the database
+        //     $check = PanierItem::where('user_id', '=', $userId)
+        //                         ->where('voiture_id', '=', $request->voiture_id);
+
+        //     if($check->count() > 0) {
+        //         return redirect()->route('panier.index');
+        //     }
+        //     else {
+
+        //         $panierItem->save();
+
+        //         return redirect()->route('panier.index');
+        //     }
+        // }
+        // else {
+        //     return view('auth.connexion');
+        // }
     }
 
     /**

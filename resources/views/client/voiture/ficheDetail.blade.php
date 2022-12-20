@@ -2,6 +2,10 @@
 @section('content')
 @php $locale = session()->get('locale'); @endphp
     <div class="container my-5">
+        
+        @if(session('message'))
+            <div class="py-3 text-success">{{ session('message') }}</div>
+        @endif
         <div class="d-flex justify-content-between align-items-end">
             <h1>{{$voiture->annee}}  {{$marque}} {{$modele}} <span >
               {{ number_format( $voiture->prixAchat * $voiture->marge)}} $</span></h1>
