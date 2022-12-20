@@ -22,42 +22,89 @@ class PanierItemController extends Controller
     {
 
         // $panierItems = Cart::with('voiture')->get();
-        $items = Gloudemans\Shoppingcart\Facades\Cart::with('voitures')->get()
-        ->map(function (Cart $items) {
-            return (object) [
-                'id' => $items->voiture_id,
-                'nom' => $items->voiture_nom,
-                'quantite' => $items->quantite,
-                'prix' => $items->voiture_prix,
-            ];
-        });
-
-        dd($items);
+        // $items = Cart::content();
+        // ->map(function (Cart $items) {
+        //     return (object) [
+        //         'id' => $items->voiture_id,
+        //         'nom' => $items->voiture_nom,
+        //         'quantite' => $items->quantite,
+        //         'prix' => $items->voiture_prix,
+        //     ];
+        // });
+        // dd($items);
 
         if(Auth::check()) {
             $userId = Auth::user()->id;
 
-            $voitures = DB::table('panier_items')
-                        ->join('voitures', 'panier_items.voiture_id', '=', 'voitures.id')
-                        ->where('panier_items.user_id', '=', $userId)
-                        ->get();
+            $voitures = Cart::content();
+            // ->map(function (Cart $items) {
+            //     return (object) [
+            //         'id' => $items->voiture_id,
+            //         'nom' => $items->voiture_nom,
+            //         'quantite' => $items->quantite,
+            //         'prix' => $items->voiture_prix,
+            //     ];
+            // });
+            // dd($voitures);
 
-                foreach ($voitures as $voiture) {
-                    $modele_marque = new Modele;
-                    $modele_marque = $modele_marque->selectModele($voiture->modele_id);
+            foreach ($voitures as $voiture) {
+                // $voiture->prixAchat = $voiture->price;
+                // dd($voiture);
+
+                $voitureDB = new Voiture;
+                $voitureDB = $voitureDB->select()
+                            ->where('id', '=', $voiture->id)
+                            ->get();
+
+                $voiture = $voitureDB[0];
+                
+                            // dd($voitureDB[0]['marge']);
+                // $voiture->marge = $voitureDB[0]['marge'];
+                // dd($voitureDB[0]['modele_id']);
+                // print_r($voiture);
+                // die();
+                $modele_marque = new Modele;
+                $modele_marque = $modele_marque->selectModele($voitureDB[0]['modele_id']);
+
+                // $panier_id = new PanierItem;
+                // $panier_id = $panier_id->select('id')
+                //             ->where('panier_items.voiture_id', '=', $voiture->id)
+                //             ->where('panier_items.user_id', '=', $userId)
+                //             ->get();
+                           
+                // $voiture->panier_id = $panier_id[0]['id'];
+                
+                // print_r($voitureDB);
+                // echo "<br>";
+                $voiture->modele = $modele_marque[0]['modele_nom'];
+                $voiture->marque = $modele_marque[0]['marque_nom'];
+            }
+
+            // die();
+            return view('client/panier.index', ['voitures' => $voitures]);
+
+            // ---------------------------------- previous version using panier_item table in DB 
+            // $voitures = DB::table('panier_items')
+            //             ->join('voitures', 'panier_items.voiture_id', '=', 'voitures.id')
+            //             ->where('panier_items.user_id', '=', $userId)
+            //             ->get();
+
+            //     foreach ($voitures as $voiture) {
+            //         $modele_marque = new Modele;
+            //         $modele_marque = $modele_marque->selectModele($voiture->modele_id);
     
-                    $panier_id = new PanierItem;
-                    $panier_id = $panier_id->select('id')
-                                ->where('panier_items.voiture_id', '=', $voiture->id)
-                                ->where('panier_items.user_id', '=', $userId)
-                                ->get();
+            //         $panier_id = new PanierItem;
+            //         $panier_id = $panier_id->select('id')
+            //                     ->where('panier_items.voiture_id', '=', $voiture->id)
+            //                     ->where('panier_items.user_id', '=', $userId)
+            //                     ->get();
                                
-                    $voiture->panier_id = $panier_id[0]['id'];
-                    $voiture->modele = $modele_marque[0]['modele_nom'];
-                    $voiture->marque = $modele_marque[0]['marque_nom'];
-                }
+            //         $voiture->panier_id = $panier_id[0]['id'];
+            //         $voiture->modele = $modele_marque[0]['modele_nom'];
+            //         $voiture->marque = $modele_marque[0]['marque_nom'];
+            //     }
 
-                return view('client/panier.index', ['voitures' => $voitures]);
+            //     return view('client/panier.index', ['voitures' => $voitures]);
         }
 
         else {

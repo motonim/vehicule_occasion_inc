@@ -19,7 +19,7 @@
                      <p class="produit__panier__prix pt-2"><span data-js-voiture-prix>{{ $voiture->prixAchat * $voiture->marge }}</span> $</p>
                   </div>
                   <div class="produit__panier__supprimer pr-2 w-10">
-                     <a href="{{ route('panier.suppression', $voiture->panier_id) }}">
+                     <a href="#">
                         <i class="fa-regular fa-rectangle-xmark font-color-yellow"></i>
                      </a>
                   </div>
