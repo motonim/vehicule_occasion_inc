@@ -65,10 +65,9 @@
                                     @endif
 
                                 </div>
-                                <!-- <li class="nav-item nav__vo__right__item">
-                                <a class="nav-link" href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                            </li> -->
-                                <iconpanier></iconpanier>
+                                <div class="d-flex align-items-center">
+                                    <iconpanier></iconpanier>({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
+                                </div>
                                 @if(Auth::check())
                                 <li class="nav-item nav__vo__right__item d-flex align-items-center nav__connexion mx-2 my-avant-768">
                                     <a class="nav-link icon__connexion" href="{{route('commande.index')}}">
