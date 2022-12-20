@@ -179,6 +179,8 @@ class VoitureController extends Controller
      */
     public function show(Voiture $voiture)
     {
+        // dd($voiture);
+
         if ($voiture->commande_id != Null) {
             return redirect(route('voiture.index'));
         }
@@ -356,4 +358,5 @@ class VoitureController extends Controller
         return redirect()->back();
 
     }
+
 }

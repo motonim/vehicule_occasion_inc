@@ -13,4 +13,5 @@ class PanierCompteur extends Component
         $compter_panier_items = Cart::content()->count(); 
         return view('livewire.panier-compteur', ['compter_panier_items' => $compter_panier_items]);
     }
+
 }

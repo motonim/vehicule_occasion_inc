@@ -9,6 +9,7 @@ use App\Http\Controllers\KmController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PanierItemController;
+use App\Http\Livewire\FicheDetailVoiture;
 
 
 /*
@@ -51,6 +52,7 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
     Route::view('/catalogue', 'client/voiture.index')->name('voiture.index');
 
 // PAGE FICHE VOITURE
+    // Route::get('/catalogue/voiture/vo-{voiture}', FicheDetailVoiture::class);
     Route::get('/catalogue/voiture/vo-{voiture}', [VoitureController::class, 'show'])->name('voiture.show');
     Route::post('/catalogue/voiture/vo-{voiture}', [PanierItemController::class, 'store'])->name('panier.store');
 

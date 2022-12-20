@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('content')
 @php $locale = session()->get('locale'); @endphp
     <div class="container my-5">
         
@@ -122,4 +120,3 @@
             </div>
         </div>
     </div>
-@endsection('content')

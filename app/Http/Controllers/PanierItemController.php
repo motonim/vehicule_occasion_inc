@@ -20,6 +20,20 @@ class PanierItemController extends Controller
      */
     public function index()
     {
+
+        // $panierItems = Cart::with('voiture')->get();
+        $items = Gloudemans\Shoppingcart\Facades\Cart::with('voitures')->get()
+        ->map(function (Cart $items) {
+            return (object) [
+                'id' => $items->voiture_id,
+                'nom' => $items->voiture_nom,
+                'quantite' => $items->quantite,
+                'prix' => $items->voiture_prix,
+            ];
+        });
+
+        dd($items);
+
         if(Auth::check()) {
             $userId = Auth::user()->id;
 
