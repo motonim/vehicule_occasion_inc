@@ -88,6 +88,7 @@
                     </div>
                     <form action="{{route('panier.store', $voiture->id)}}" method="post">
                         @csrf
+                        <input type="hidden" name="quantite" value="1">
                         <input type="hidden" name="voiture_id" id="voiture_id" value="{{$voiture->id}}">
                         <input type="hidden" name="test" id="test" value="test">
                         <btnajouter></btnajouter>
