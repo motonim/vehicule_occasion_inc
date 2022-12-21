@@ -6,6 +6,7 @@ use App\Models\PanierItem;
 use App\Models\Voiture;
 use App\Models\User;
 use App\Models\Modele;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +48,9 @@ class PanierItemController extends Controller
             // });
             // dd($items);
             if($items){
+                $provinces = new Province;
+                $provinces = $provinces->all();
+
                 $voitures = array();
 
                 foreach($items as $item) {
@@ -67,7 +71,7 @@ class PanierItemController extends Controller
                     // echo "<br>";
                     array_push($voitures, $voiture);
                 }
-                return view('client/panier.index', ['voitures' => $voitures]);
+                return view('client/panier.index', ['voitures' => $voitures, 'provinces' => $provinces]);
 
             }
 

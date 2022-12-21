@@ -92,7 +92,9 @@
                      <label for="province">@lang('auth.province') *</label>
                      <div class="">
                         <select name="province" id="province" class="form__connexion__input">
-                           <option value="" selected>-</option>
+                           @foreach($provinces as $province)
+                              <option value="{{$province->id}}">{{$province->nom}}</option>
+                           @endforeach
                         </select>                  
                      </div>
                   </div>
@@ -161,7 +163,9 @@
                      <label for="province">@lang('auth.province') *</label>
                      <div class="">
                         <select name="province" id="province" class="form__connexion__input">
-                           <option value="" selected>-</option>
+                           @foreach($provinces as $province)
+                              <option value="{{$province->id}}">{{$province->nom}}</option>
+                           @endforeach
                         </select>                  
                      </div>
                   </div>
