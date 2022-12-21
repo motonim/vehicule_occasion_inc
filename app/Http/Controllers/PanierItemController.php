@@ -225,7 +225,7 @@ class PanierItemController extends Controller
      */
     public function show(PanierItem $panierItem)
     {
-        //
+
     }
 
     /**
@@ -257,9 +257,27 @@ class PanierItemController extends Controller
      * @param  \App\Models\PanierItem  $panierItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PanierItem $panierItem)
+    public function destroy(Voiture $voiture)
     {
-        $panierItem->delete();
+        // echo "yes";
+        // die();
+        // dd($voiture);
+
+        foreach(Cart::content() as $row){
+            // print_r($voiture->id);
+            // echo"<br>";
+            // print_r($row->id);
+            // echo"<br>";
+
+            if ($voiture->id == $row->id) {
+                $rowId = $row->rowId;
+                Cart::remove($rowId);
+            }
+
+        }
+        // die();
+        // Cart::remove($voiture->id);
+        // $panierItem->delete();
         return redirect(route('panier.index'));
     }
 }
