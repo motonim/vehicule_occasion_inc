@@ -28,7 +28,7 @@
                     <div class="mt-5 text-white-50" style="font-size: 16px;">@lang('client.message_aucune_commande')</div>
                     @else
                     @foreach ($mesCommandes as $maCommande)
-                    <div class="table-responsive-md card vo_bg-primary border-white mt-4">
+                    <div class="table-responsive-md card vo_bg-primary mt-4">
                         <!-- détail client -->
                         <div class=" card-header bg-transparent d-flex justify-content-between text-white p-5">
                             <div>
@@ -50,7 +50,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-transparent border-white d-flex justify-content-end">
+                        <div class="border--gray"></div>
+                        <div class="card-footer bg-transparent d-flex justify-content-end">
                             <div class="d-flex justify-content-end align-items-center">
                                 <!-- bouton affiche détail commande-->
                                 <a class="btn__border m-2" href="{{ route('commande.detail', $maCommande->id) }}">@lang('client.voir_commande')</a>
@@ -76,8 +77,35 @@
                 </button>
             </div>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <div class="accordion-body pt-3">
+                <div class="form-group col m-1">
+                    <strong>@lang('auth.nom')</strong>
+                    <input type="text" class="form__inscription__input" name="nom" placeholder="@lang('auth.nom')" value="{{$user->nom}}">
+                    @if($errors->has('nom'))
+                    <span class="text-danger">{{ $errors->first('nom') }}</span>
+                    @endif
+                </div>
+                <div class="form-group col mx-1 my-2">
+                    <strong>@lang('auth.prenom')</strong>
+                    <input type="text" class="form__inscription__input" name="prenom" placeholder="@lang('auth.prenom')" value="{{$user->prenom}}">
+                    @if($errors->has('prenom'))
+                    <span class="text-danger">{{ $errors->first('prenom') }}</span>
+                    @endif
+                </div>
+                <div class="form-group col m-1">
+                    <strong>@lang('auth.nom_usager')</strong>
+                    <input type="text" class="form__inscription__input" name="nomUsager" placeholder="@lang('auth.nom_usager')" value="{{$user->nomUsager}}">
+                    @if($errors->has('nomUsager'))
+                    <span class="text-danger">{{ $errors->first('nomUsager') }}</span>
+                    @endif
+                </div>
+                <div class="control-group col mx-1 my-2">
+                    <strong>@lang('auth.courriel')</strong>
+                    <input type="text" class="form__inscription__input" name="courriel" placeholder="@lang('auth.email')" value="{{$user->courriel}}">
+                    @if($errors->has('courriel'))
+                    <span class="text-danger">{{ $errors->first('courriel') }}</span>
+                    @endif
+                </div>
             </div>
             </div>
         </div>

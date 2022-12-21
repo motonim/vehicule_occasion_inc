@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container p-5 col-12 col-lg-10 min-vh-100">
+<div class="p-5 min-vh-100">
     <div class="d-flex justify-content-between">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb vo_bg-primary pl-0">

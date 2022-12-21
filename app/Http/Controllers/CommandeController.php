@@ -51,7 +51,9 @@ class CommandeController extends Controller
 
         }
 
-        return view('client/commande.index', compact('mesCommandes'));
+        $user = Auth::user();
+
+        return view('client/commande.index', compact('mesCommandes', 'user'));
     }
 
     public function reserver()
