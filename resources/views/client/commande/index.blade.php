@@ -95,7 +95,7 @@
                         <input type="text" class="form__inscription__input" name="courriel" placeholder="@lang('auth.email')" value="{{$user->courriel}}">
                     </div>
                     <div class="d-flex justify-content-between p-3">
-                        <a href="" class="btn__border p-2">@lang('auth.modifier')</a>
+                        <a href="{{ route('user.modification', $user->id) }}" class="btn__border p-2">@lang('auth.modifier')</a>
                         <a href="" class="btn btn-outline-danger p-2">@lang('auth.supprimer')</a>
                     </div>
                 </div>

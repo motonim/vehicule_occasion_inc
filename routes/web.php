@@ -58,6 +58,8 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
 
 //PAGE MES COMMANDE
     Route::get('/mes-commandes', [CommandeController::class, 'index'])->name('commande.index')->middleware('auth');
+    Route::get('/mes-commandes/{user}', [CustomAuthController::class, 'edit'])->name('user.modification')->middleware('auth');
+    Route::put('/mes-commandes/{user}', [CustomAuthController::class , 'update'])->name('user.modification')->middleware('auth');
 
 // CLIENT - détail commande
     Route::get('/mes-commandes/co-{commande}', [CommandeController::class, 'show'])->name('commande.detail')->middleware('auth');

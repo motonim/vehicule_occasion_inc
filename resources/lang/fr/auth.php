@@ -37,6 +37,8 @@ return [
     'noaccount' => "Vous n'avez pas de compte?",
     'modifier' => 'Modifier votre compte',
     'supprimer' => 'Supprimer votre compte',
+    'sauvegarder' => 'Sauvegarder',
+    're_mot_de_passe' => 'Changer le mot de passe',
 
 
 

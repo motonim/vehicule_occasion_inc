@@ -85,7 +85,9 @@ class CustomAuthController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        // dd($user);
+        return view('client/compte.modification', compact('user'));
+
     }
 
     /**
@@ -97,7 +99,19 @@ class CustomAuthController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'nom' => 'required|min:2|max:191',
+            'prenom' => 'required|min:2|max:191',
+            'courriel' => 'required|email',
+        ]);
+
+        $user->update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'courriel' => $request->courriel
+        ]);
+
+        return view('client/compte.modification', compact('user'));
     }
 
     /**
