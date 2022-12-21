@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group col m-1">
                     @lang('auth.nom_usager')
-                    <input type="text" disabled class="form__inscription__input" name="nomUsager" placeholder="@lang('auth.nom_usager')" value="{{ $user->nomUsager }}">
+                    <input type="text" disabled class="form__inscription__input bg-secondary bg-gradient" name="nomUsager" placeholder="@lang('auth.nom_usager')" value="{{ $user->nomUsager }}">
                 </div>
                 <div class="control-group col m-1">
                     @lang('auth.email')
@@ -35,7 +35,7 @@
                 </div>
                 <div class="control-group col m-1">
                     @lang('auth.mot_de_passe')
-                    <input type="password" disabled class="form__inscription__input" name="password" value="{{ $user->password }}">
+                    <input type="password" disabled class="form__inscription__input bg-secondary bg-gradient" name="password" value="{{ $user->password }}">
                     @if($errors->has('password'))
                     <span class="text-danger">{{ $errors->first('password') }}</span>
                     @endif
