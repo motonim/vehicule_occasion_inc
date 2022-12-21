@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class CustomAuthController extends Controller
 {
+
+    public function changeMDP(User $user) {
+        return view('client/compte.change-mot-de-passe', compact('user'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -164,4 +169,5 @@ class CustomAuthController extends Controller
         Auth::logout();
         return redirect('connexion');
     }
+
 }

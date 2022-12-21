@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="control-group col mt-3 d-flex justify-content-center"> 
-                    <a href="" id="btn-submit" class="btn__border">@lang('auth.re_mot_de_passe')</a> 
+                    <a href="{{ route('user.changeMDP', $user->id) }}" class="btn__border">@lang('auth.re_mot_de_passe')</a> 
                 </div>
             </form>
         </div>
