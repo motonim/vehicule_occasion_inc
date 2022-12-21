@@ -77,47 +77,31 @@
                 </button>
             </div>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body pt-3">
-                <div class="form-group col m-1">
-                    <strong>@lang('auth.nom')</strong>
-                    <input type="text" class="form__inscription__input" name="nom" placeholder="@lang('auth.nom')" value="{{$user->nom}}">
-                    @if($errors->has('nom'))
-                    <span class="text-danger">{{ $errors->first('nom') }}</span>
-                    @endif
+                <div class="accordion-body pt-3">
+                    <div class="form-group col m-1">
+                        <strong>@lang('auth.nom')</strong>
+                        <input type="text" class="form__inscription__input" name="nom" placeholder="@lang('auth.nom')" value="{{$user->nom}}">
+                    </div>
+                    <div class="form-group col mx-1 my-2">
+                        <strong>@lang('auth.prenom')</strong>
+                        <input type="text" class="form__inscription__input" name="prenom" placeholder="@lang('auth.prenom')" value="{{$user->prenom}}">
+                    </div>
+                    <div class="form-group col m-1">
+                        <strong>@lang('auth.nom_usager')</strong>
+                        <input type="text" class="form__inscription__input" name="nomUsager" placeholder="@lang('auth.nom_usager')" value="{{$user->nomUsager}}">
+                    </div>
+                    <div class="control-group col mx-1 my-2">
+                        <strong>@lang('auth.courriel')</strong>
+                        <input type="text" class="form__inscription__input" name="courriel" placeholder="@lang('auth.email')" value="{{$user->courriel}}">
+                    </div>
+                    <div class="d-flex justify-content-between p-3">
+                        <a href="" class="btn__border p-2">@lang('auth.modifier')</a>
+                        <a href="" class="btn btn-outline-danger p-2">@lang('auth.supprimer')</a>
+                    </div>
                 </div>
-                <div class="form-group col mx-1 my-2">
-                    <strong>@lang('auth.prenom')</strong>
-                    <input type="text" class="form__inscription__input" name="prenom" placeholder="@lang('auth.prenom')" value="{{$user->prenom}}">
-                    @if($errors->has('prenom'))
-                    <span class="text-danger">{{ $errors->first('prenom') }}</span>
-                    @endif
-                </div>
-                <div class="form-group col m-1">
-                    <strong>@lang('auth.nom_usager')</strong>
-                    <input type="text" class="form__inscription__input" name="nomUsager" placeholder="@lang('auth.nom_usager')" value="{{$user->nomUsager}}">
-                    @if($errors->has('nomUsager'))
-                    <span class="text-danger">{{ $errors->first('nomUsager') }}</span>
-                    @endif
-                </div>
-                <div class="control-group col mx-1 my-2">
-                    <strong>@lang('auth.courriel')</strong>
-                    <input type="text" class="form__inscription__input" name="courriel" placeholder="@lang('auth.email')" value="{{$user->courriel}}">
-                    @if($errors->has('courriel'))
-                    <span class="text-danger">{{ $errors->first('courriel') }}</span>
-                    @endif
-                </div>
-            </div>
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- <div class="d-flex justify-content-between align-items-center">
-        <h1 class="fs-2">@lang('client.list_commande')</h1>
-    </div> -->
-
     
 </div>
 @endsection('content')

@@ -35,4 +35,6 @@ return [
     'mot_de_passe_confirmation'=> 'Password confirmation',
     'enregistrer'=> 'Save',
     'noaccount' => "You don't have an account?",
+    'modifier' => 'Edit your account',
+    'supprimer' => 'Remove your account',
 ];

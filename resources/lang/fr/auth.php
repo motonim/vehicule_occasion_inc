@@ -35,5 +35,9 @@ return [
     'mot_de_passe_confirmation'=> 'Confirmation mot de passe',
     'enregistrer'=> 'Enrgistrer',
     'noaccount' => "Vous n'avez pas de compte?",
+    'modifier' => 'Modifier votre compte',
+    'supprimer' => 'Supprimer votre compte',
+
+
 
 ];
