@@ -190,6 +190,9 @@
          <div class="produit__panier__section__side col border--gray border-radius__5px p-2 ">
             <h2 class='p-2'>@lang('commande.delivery_method')</h2>
             <div class="produit__panier__expedition p-2">
+               @if(count($voitures) < 1)
+                  <p class="py-5 px-2">@lang('commande.indisponible')</p>           
+               @else
                <form id="" method="post">
                   <div class="line-height-base h-70px" data-js-livraison-options>
                      <input type="radio" name="expedition" id="pmlivraison" data-js-expedition-livraison checked>
@@ -216,6 +219,7 @@
                   </div>
                   
                </form>
+               @endif
             </div>
          </div>
          <div class="produit__panier__section__side col-12 col-md-6 col-lg-12 px-0">

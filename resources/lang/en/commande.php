@@ -26,7 +26,7 @@ return[
     'payer_avec' => 'Check out with',
     'payer' => 'PAY NOW',
     'adresse_livraison' => 'Shipping Address',
-
+    'indisponible' => 'Unavailabe',
     
  
     

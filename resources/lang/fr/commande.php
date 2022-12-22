@@ -26,6 +26,7 @@ return[
     'payer_avec' => 'Payer avec ',
     'payer' => 'PAYER MAINTENANT',
     'adresse_livraison' => 'Adresse de livraison',
+    'indisponible' => 'Indisponible',
 
  
     
