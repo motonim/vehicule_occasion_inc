@@ -33,6 +33,7 @@
             @csrf
             <input type="hidden" name="expidition_id" value="3">
             <input type="hidden" name="paiement_id" value="2">
+            <input type="hidden" name="statut_id" value="1">
             <div class="border--gray border-radius__5px p-2 mt-3">         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
@@ -106,6 +107,7 @@
             @csrf
             <input type="hidden" name="expidition_id" value="2">
             <input type="hidden" name="paiement_id" value="1">
+            <input type="hidden" name="statut_id" value="2">
             <div class="border--gray border-radius__5px p-2 mt-3">         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
@@ -179,6 +181,7 @@
             @csrf
             <input type="hidden" name="expidition_id" value="1">
             <input type="hidden" name="paiement_id" value="1">
+            <input type="hidden" name="statut_id" value="2">
             <div class="border--gray border-radius__5px p-2 mt-3" >         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
