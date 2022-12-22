@@ -36,7 +36,7 @@
             <input type="hidden" name="statut_id" value="1">
             @if(count($voitures) >= 1)
                @foreach ($voitures as $voiture)
-               <input type="hidden" name="voiture_id_{{$voiture->id}}" value="{{ $voiture->id }}">
+               <input type="hidden" name="metadata[]" value="{{ $voiture->id }}">
                @endforeach
             @endif
             <div class="border--gray border-radius__5px p-2 mt-3">         
@@ -65,12 +65,6 @@
                   <label for="adresse">@lang('auth.adresse') *</label>
                   <div class="">
                         <input type="text" class="form__connexion__input" name="adresse" placeholder="ex: 123 Rue Rpincipale">
-                  </div>
-               </div>
-               <div class="py-3 px-2">
-                  <label for="infoSupp">@lang('commande.infoSupplementaires') *</label>
-                  <div class="">
-                        <input type="text" class="form__connexion__input" name="infoSupp" placeholder="ex: Suite 200">
                   </div>
                </div>
                <div class="py-3 px-2">
@@ -115,7 +109,7 @@
             <input type="hidden" name="statut_id" value="2">
             @if(count($voitures) >= 1)
                @foreach ($voitures as $voiture)
-               <input type="hidden" name="voiture_id_{{$voiture->id}}" value="{{ $voiture->id }}">
+               <input type="hidden" name="metadata[]" value="{{ $voiture->id }}">
                @endforeach
             @endif
             <div class="border--gray border-radius__5px p-2 mt-3">         
@@ -144,12 +138,6 @@
                   <label for="adresse">@lang('auth.adresse') *</label>
                   <div class="">
                         <input type="text" class="form__connexion__input" name="adresse" placeholder="ex: 123 Rue Rpincipale">
-                  </div>
-               </div>
-               <div class="py-3 px-2">
-                  <label for="infoSupp">@lang('commande.infoSupplementaires') *</label>
-                  <div class="">
-                        <input type="text" class="form__connexion__input" name="infoSupp" placeholder="ex: Suite 200">
                   </div>
                </div>
                <div class="py-3 px-2">
@@ -194,7 +182,7 @@
             <input type="hidden" name="statut_id" value="2">
             @if(count($voitures) >= 1)
                @foreach ($voitures as $voiture)
-               <input type="hidden" name="voiture_id_{{$voiture->id}}" value="{{ $voiture->id }}">
+               <input type="hidden" name="metadata[]" value="{{ $voiture->id }}">
                @endforeach
             @endif
             <div class="border--gray border-radius__5px p-2 mt-3" >         
@@ -223,12 +211,6 @@
                   <label for="adresse">@lang('auth.adresse') *</label>
                   <div class="">
                         <input type="text" class="form__connexion__input" name="adresse" placeholder="ex: 123 Rue Rpincipale">
-                  </div>
-               </div>
-               <div class="py-3 px-2">
-                  <label for="infoSupp">@lang('commande.infoSupplementaires') *</label>
-                  <div class="">
-                        <input type="text" class="form__connexion__input" name="infoSupp" placeholder="ex: Suite 200">
                   </div>
                </div>
                <div class="py-3 px-2">
