@@ -9,6 +9,7 @@ use App\Http\Controllers\KmController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PanierItemController;
+use App\Http\Controllers\SecurityForgotPassword;
 use App\Http\Livewire\FicheDetailVoiture;
 
 
@@ -38,11 +39,14 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
 // PAGE UTILISATEUR
     Route::get('/profile/{user}', [CustomAuthController::class, 'edit'])->name('user.modification')->middleware('auth');
     Route::put('/profile/{user}', [CustomAuthController::class , 'update'])->name('user.modification')->middleware('auth');
-    Route::get('/profile/{user}/change-mot-de-passe', [CustomAuthController::class, 'changeMDP'])->name('user.changeMDP')->middleware('auth');
 
 // CONNEXION
     Route::get('/connexion', [CustomAuthController::class, 'index'])->name('connexion');
     Route::post('/connexion', [CustomAuthController::class, 'authentication'])->name('connexion.authentication');
+    Route::get('/forgot_password', [SecurityForgotPassword::class, 'forgot'])->name('connexion.forgot');
+    Route::post('/forgot_password', [SecurityForgotPassword::class, 'password'])->name('connexion.password');
+    Route::get('/reset-password/{email}/{code}', [SecurityForgotPassword::class, 'reset'])->name('connexion.reset');
+    Route::post('/reset-password/{email}/{code}', [SecurityForgotPassword::class, 'resetPassword'])->name('connexion.resetPassword');
 
 // DECONNEXION
     Route::get('deconnexion', [CustomAuthController::class, 'logout'])->name('deconnexion');
@@ -63,7 +67,7 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
 
 //PAGE MES COMMANDE
     Route::get('/mes-commandes', [CommandeController::class, 'index'])->name('commande.index')->middleware('auth');
-   
+    Route::get('/mes-commandes/{user}', [CustomAuthController::class, 'destroy'])->name('user.suppression')->middleware('auth');
 
 // CLIENT - détail commande
     Route::get('/mes-commandes/co-{commande}', [CommandeController::class, 'show'])->name('commande.detail')->middleware('auth');
