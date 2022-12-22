@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Paiement;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use PDF;
 
 class CommandeController extends Controller
@@ -111,7 +113,6 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $request->validate([
             'courriel' => 'required|email',
             'prenom' => 'required|min:2|max:191',
@@ -124,18 +125,14 @@ class CommandeController extends Controller
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12'
         ]);
 
-        // dd(Auth::user()->id);
         $user = Auth::user()->id;
-
-
+       
         // générer le numeroDeCommande aléatoire
         do {
             $numeroDeCommande = random_int(100000000, 199999999);
         } while (Commande::where("numeroDeCommande", "=", $numeroDeCommande)->first());
 
-
         $commande = new Commande;
-        // $commande->fill($request->all());
         $commande->expedition_id = $request->expedition_id;
         $commande->statut_id = $request->statut_id;
         $commande->paiement_id = $request->paiement_id;
@@ -145,18 +142,28 @@ class CommandeController extends Controller
         $commande->prenom = $request->prenom;
         $commande->nom = $request->nom;
         $commande->adresse = $request->adresse;
-        $commande->infoSupp = $request->infoSupp;
         $commande->ville = $request->ville;
         $commande->province = $request->province;
         $commande->code_postal = $request->code_postal;
         $commande->telephone = $request->telephone;
-
+        
         $commande->save();
 
-        $voiture = new Voiture();
-        // 여기에서 인제 자동차를 불러와서 commande_id 세이브해야지.
-        // 어떻게 자동차를 불러올것인가. input:hidden?
-        // 그리고 세이브하고 나서 Cart::remove? 해서 장바구니 비우기
+        $commandeId = $commande->id;
+
+        // metter à jour la table voiture avec commande_id
+        $voitureIds = $request->metadata;
+        for($i = 0; $i < count($voitureIds); $i++) {
+            DB::table('voitures')
+                ->where('id', '=', $voitureIds[$i])
+                ->update([
+                    'commande_id' => $commandeId
+                ]);
+           
+        }
+
+        // supprimer tous les items dans le panier
+        Cart::destroy();
 
         return redirect(route('commande.index'));
     }
