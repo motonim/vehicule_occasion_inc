@@ -19,34 +19,19 @@
                      <p class="produit__panier__prix pt-2"><span data-js-voiture-prix>{{ $voiture->prixAchat * $voiture->marge }}</span> $</p>
                   </div>
                   <div class="produit__panier__supprimer pr-2 w-10">
-
                      <a href="{{ route('panier.suppression', $voiture->id) }}">
                         <i class="fa-regular fa-rectangle-xmark font-color-yellow"></i>
                      </a>
-<!--                      
-                     <a href="#">
-                        <i class="fa-regular fa-rectangle-xmark font-color-yellow"></i>
-                     </a> -->
                   </div>
                </div>
                @endforeach
             @endif
-
-            <!-- <div class="produit__panier__item py-3 d-flex justify-content-between align-items-center">
-               <img src="{{asset('assets/img/car-no-bg-1.png')}}" alt="" class='produit__img w-25 p-2'>
-               <div class="produit__panier__attributes w-75 p-2 mx-5">
-                  <p class='produit__panier__titre'>2022 Maserati Grecale PrimaSerie</p>
-                  <p class="produit__panier__prix">227956.25 $</p>
-               </div>
-               <div class="produit__panier__supprimer pr-2">
-                  <button><i class="fa-regular fa-rectangle-xmark font-color-yellow"></i></button>
-               </div>
-            </div> -->
          </div>
 
-         <!-- --------formulaire Réserver-------- -->
-         <form action="{{route('commande.store')}}" method="post" data-js-formulaire-reserver>
+         <!-- --------formulaire Réservation-------- -->
+         <form action="{{route('commande.store')}}" method="post" data-js-formulaire-reservation>
             @csrf
+            <input type="hidden" name="expidition_id" value="3">
             <div class="border--gray border-radius__5px p-2 mt-3">         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
@@ -115,9 +100,82 @@
             </div>
          </form>
 
-         <!-- --------formulaire Payer-------- -->
-         <form action="{{route('commande.store')}}" method="post" data-js-formulaire-payer>
+         <!-- --------formulaire Collection-------- -->
+         <form action="{{route('commande.store')}}" method="post" data-js-formulaire-collection>
             @csrf
+            <input type="hidden" name="expidition_id" value="2">
+            <div class="border--gray border-radius__5px p-2 mt-3">         
+               <h2 class='p-2'>Information</h2>
+               <div class="py-3 px-2">
+                  <label for="courriel">@lang('auth.email') *</label>
+                  <div class="">
+                        <input type="email" class="form__connexion__input" name="courriel" placeholder="@lang('auth.email')">
+                  </div>
+               </div>
+
+               <h2 class='pt-5 pb-2 pl-2'>@lang('commande.adresse_facturation')</h2>
+               <div class="py-3 px-2">
+                  <label for="prenom">@lang('auth.prenom') *</label>
+                  <div class="">
+                        <input type="text" class="form__connexion__input" name="prenom" >
+                  </div>
+               </div>
+               <div class="py-3 px-2">
+                  <label for="nom">@lang('auth.nom') *</label>
+                  <div class="">
+                        <input type="text" class="form__connexion__input" name="nom">
+                  </div>
+               </div>
+               <div class="py-3 px-2">
+                  <label for="adresse">@lang('auth.adresse') *</label>
+                  <div class="">
+                        <input type="text" class="form__connexion__input" name="adresse" placeholder="ex: 123 Rue Rpincipale">
+                  </div>
+               </div>
+               <div class="py-3 px-2">
+                  <label for="infoSupp">@lang('commande.infoSupplementaires') *</label>
+                  <div class="">
+                        <input type="text" class="form__connexion__input" name="infoSupp" placeholder="ex: Suite 200">
+                  </div>
+               </div>
+               <div class="py-3 px-2">
+                  <label for="ville">@lang('auth.ville') *</label>
+                  <div class="">
+                        <input type="text" class="form__connexion__input" name="ville">
+                  </div>
+               </div>
+               <div class="d-flex">
+                  <div class="py-3 px-2">
+                     <label for="province">@lang('auth.province') *</label>
+                     <div class="">
+                        <select name="province" id="province" class="form__connexion__input">
+                           @foreach($provinces as $province)
+                              <option value="{{$province->id}}">{{$province->nom}}</option>
+                           @endforeach
+                        </select>                  
+                     </div>
+                  </div>
+                  <div class="py-3 px-2">
+                     <label for="code_postal">@lang('auth.code_postal') *</label>
+                     <div class="">
+                           <input type="text" class="form__connexion__input" name="code_postal" placeholder="ex: H3Z 2Y7">
+                     </div>
+                  </div>
+               </div>
+               <div class="py-3 px-2">
+                  <label for="telephone">@lang('auth.telephone') *</label>
+                  <div class="">
+                        <input type="text" class="form__connexion__input" name="telephone">
+                  </div>
+               </div>
+               <button class="btn__caisse__reserver--desktop my-3">@lang('commande.btn_suivant')</button>
+            </div>
+         </form>
+
+         <!-- --------formulaire Livraison-------- -->
+         <form action="{{route('commande.store')}}" method="post" data-js-formulaire-livraison>
+            @csrf
+            <input type="hidden" name="expidition_id" value="2">
             <div class="border--gray border-radius__5px p-2 mt-3" >         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
@@ -243,8 +301,9 @@
                      <p><span data-js-total-prix></span> $</p>
                   </div>
                </div>
-               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-payer>@lang('commande.payer')</button>
-               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-reserver>@lang('commande.reserver')</button>
+               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-livraison>@lang('commande.payer')</button>
+               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-collection>@lang('commande.payer')</button>
+               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-reservation>@lang('commande.reserver')</button>
             </div>
          </div>
       </div>
