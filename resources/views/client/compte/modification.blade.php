@@ -4,6 +4,9 @@
     <div class="col-12 col-sm-8 col-md-6 col-xl-4 py-2">
         <div class="border--gray rounded my-5 p-4">
             <h1 class="display-5 m-2 text-center fs-3">@lang('auth.modifier')</h1>
+            @if(session('success'))
+                <div class="text-success">{{ session('success')}}</div>
+            @endif
             <hr>
             <form method="post" class="p-3">
             @method('PUT')
@@ -45,10 +48,6 @@
 
                 <div class="control-group col mt-3 d-flex justify-content-center"> 
                     <button id="btn-submit" type="submit" class="btn__inscription">@lang('auth.sauvegarder')</button> 
-                </div>
-
-                <div class="control-group col mt-3 d-flex justify-content-center"> 
-                    <a href="{{ route('user.changeMDP', $user->id) }}" class="btn__border">@lang('auth.re_mot_de_passe')</a> 
                 </div>
             </form>
         </div>
