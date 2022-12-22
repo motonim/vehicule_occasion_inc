@@ -11,7 +11,11 @@
                     @foreach($errors->all() as $error)
                         <span class="text-danger">{{ $error }}</span><br>
                     @endforeach
-                    <div class="form-row d-flex justify-content-between">
+
+                    @if(session('success'))
+                        <div class="alert alert-danger">{{ session('success')}}</div>
+                    @endif
+                        <div class="form-row d-flex justify-content-between">
                         <div class="control-group col m-1">
                             <input type="email" class="form__connexion__input" name="courriel" placeholder="@lang('auth.email')" value="{{old('courriel')}}">
                         </div>
@@ -20,6 +24,9 @@
                         <div class="control-group col m-1">
                             <input type="password" class="form__connexion__input" name="password" placeholder="@lang('auth.mot_de_passe')">
                         </div>
+                    </div>
+                    <div class="row">
+                        <a class="ml-3 my-2 text-secondary" href="{{ route('connexion.forgot') }}">@lang('auth.forgot-password')</a>
                     </div>
                     <div class="row mt-2">
                         <div class="control-group col m-1 d-flex justify-content-center"> <button id="btn-submit" class="btn__connexion">@lang('auth.connexion')</button> </div>
