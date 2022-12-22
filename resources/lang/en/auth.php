@@ -39,4 +39,5 @@ return [
     'supprimer' => 'Remove your account',
     'sauvegarder' => 'Save',
     're_mot_de_passe' => 'Change password',
+    'forgot-password' => 'Forgot password?',
 ];
