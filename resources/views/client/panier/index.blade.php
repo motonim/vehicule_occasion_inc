@@ -32,6 +32,7 @@
          <form action="{{route('commande.store')}}" method="post" data-js-formulaire-reservation>
             @csrf
             <input type="hidden" name="expidition_id" value="3">
+            <input type="hidden" name="paiement_id" value="2">
             <div class="border--gray border-radius__5px p-2 mt-3">         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
@@ -104,6 +105,7 @@
          <form action="{{route('commande.store')}}" method="post" data-js-formulaire-collection>
             @csrf
             <input type="hidden" name="expidition_id" value="2">
+            <input type="hidden" name="paiement_id" value="1">
             <div class="border--gray border-radius__5px p-2 mt-3">         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
@@ -175,7 +177,8 @@
          <!-- --------formulaire Livraison-------- -->
          <form action="{{route('commande.store')}}" method="post" data-js-formulaire-livraison>
             @csrf
-            <input type="hidden" name="expidition_id" value="2">
+            <input type="hidden" name="expidition_id" value="1">
+            <input type="hidden" name="paiement_id" value="1">
             <div class="border--gray border-radius__5px p-2 mt-3" >         
                <h2 class='p-2'>Information</h2>
                <div class="py-3 px-2">
