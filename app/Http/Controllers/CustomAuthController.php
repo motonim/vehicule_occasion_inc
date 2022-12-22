@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class CustomAuthController extends Controller
 {
-
-    public function changeMDP(User $user) {
-        return view('client/compte.change-mot-de-passe', compact('user'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -116,7 +111,7 @@ class CustomAuthController extends Controller
             'courriel' => $request->courriel
         ]);
 
-        return view('client/compte.modification', compact('user'));
+        return redirect(route('user.modification', compact('user')))->with('success', 'Bien mis à jour');
     }
 
     /**
@@ -127,7 +122,8 @@ class CustomAuthController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('/');
     }
 
     public function authentication(Request $request)
