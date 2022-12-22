@@ -111,8 +111,54 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        print_r($request->nom);
-        die();
+        dd($request);
+        $request->validate([
+            'courriel' => 'required|email',
+            'prenom' => 'required|min:2|max:191',
+            'nom' => 'required|min:2|max:191',
+            'adresse' => 'required|regex:/([- ,\/0-9a-zA-Z]+)/',
+            'infoSupp' => 'regex:/([- ,\/0-9a-zA-Z]+)/',
+            'ville' => 'required|string',
+            'province' => 'required|integer',
+            'code_postal' => 'required|regex:/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/',
+            'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12'
+        ]);
+
+        // dd(Auth::user()->id);
+        $user = Auth::user()->id;
+
+
+        // générer le numeroDeCommande aléatoire
+        do {
+            $numeroDeCommande = random_int(100000000, 199999999);
+        } while (Commande::where("numeroDeCommande", "=", $numeroDeCommande)->first());
+
+
+        $commande = new Commande;
+        // $commande->fill($request->all());
+        $commande->expedition_id = $request->expedition_id;
+        $commande->statut_id = $request->statut_id;
+        $commande->paiement_id = $request->paiement_id;
+        $commande->numeroDeCommande = $numeroDeCommande;
+        $commande->user_id = $user;
+        $commande->courriel = $request->courriel;
+        $commande->prenom = $request->prenom;
+        $commande->nom = $request->nom;
+        $commande->adresse = $request->adresse;
+        $commande->infoSupp = $request->infoSupp;
+        $commande->ville = $request->ville;
+        $commande->province = $request->province;
+        $commande->code_postal = $request->code_postal;
+        $commande->telephone = $request->telephone;
+
+        $commande->save();
+
+        $voiture = new Voiture();
+        // 여기에서 인제 자동차를 불러와서 commande_id 세이브해야지.
+        // 어떻게 자동차를 불러올것인가. input:hidden?
+        // 그리고 세이브하고 나서 Cart::remove? 해서 장바구니 비우기
+
+        return redirect(route('commande.index'));
     }
 
     /**
