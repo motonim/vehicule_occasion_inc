@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
    document.querySelector('[data-js-frais-livraison]').innerText = '150 $'
 
    // Page Panier expedition options
-   function handleRadioClick() {
+   function cliquerSurRadio() {
       let livraison = true;
 
       if (btnExpLivraison.checked) {
@@ -44,9 +44,9 @@ window.addEventListener('DOMContentLoaded', (e) => {
    }
 
 
-   const radioButtons = document.querySelectorAll('input[name="expedition"]');
-   radioButtons.forEach(radio => {
-   radio.addEventListener('click', handleRadioClick);
+   const btnRadios = document.querySelectorAll('input[name="expedition"]');
+   btnRadios.forEach(radio => {
+   radio.addEventListener('click', cliquerSurRadio);
    });
 
    btnPanierReserver.addEventListener('click', () => {
