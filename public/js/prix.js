@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
       impotTPS.innerText = totalTPS
       impotTVQ.innerText = totalTVQ
       let totalFinal = sum + parseFloat(totalTPS) + parseFloat(totalTVQ)
-      totalPrix.innerText = totalFinal
+      totalPrix.innerText = totalFinal.toFixed(2)
    }
 
 })
