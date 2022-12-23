@@ -3,6 +3,9 @@
 <div class="container py-5 min-vh-100">
     <div class="accordion py-5" id="accordionExample">
         <div class="accordion-item border--gray border-radius__5px p-3">
+            @if(session('success'))
+                <div class="alert alert-danger">{{ session('success')}}</div>
+            @endif
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
