@@ -10,6 +10,7 @@ use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PanierItemController;
 use App\Http\Controllers\SecurityForgotPassword;
+use App\Http\Controllers\PaiementPayPalController;
 use App\Http\Livewire\FicheDetailVoiture;
 
 
@@ -115,6 +116,9 @@ Route::get('/', [VoitureController::class, 'vedette'])->name('accueil');
     Route::get('/panier', [PanierItemController::class, 'index'])->name('panier.index');
     Route::get('/panier/{voiture}', [PanierItemController::class, 'destroy'])->name('panier.suppression');
     Route::post('/panier', [CommandeController::class, 'store'])->name('commande.store');
+    Route::post('/panier', [PaiementPayPalController::class, 'pay'])->name('commande.paypal');
+    Route::get('/success', [PaiementPayPalController::class, 'success'])->name('commande.success');
+    Route::get('/error', [PaiementPayPalController::class, 'error'])->name('commande.error');
 
 // Affiche la facture pdf
     Route::get('/facture/PDF/{facture}', [CommandeController::class, 'facturePdf'])->name('facture.pdf');
