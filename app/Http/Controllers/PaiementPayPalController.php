@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PaiementPaypal;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Omnipay\Omnipay;
 
 class PaiementPayPalController extends Controller
@@ -61,7 +62,9 @@ class PaiementPayPalController extends Controller
 
                 $payment->save();
 
-                return "Le paiement a été effectué. L'ID transaction est : " . $arr['id'];
+                Cart::destroy();
+                
+                return redirect(route('commande.index'))->with('success', "Le paiement a été effectué. L'ID transaction est : " . $arr['id']);
             }
             else {
                 return $response->getMessage();
