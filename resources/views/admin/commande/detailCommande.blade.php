@@ -9,7 +9,7 @@
                 <div>
                     <p>{{ $commande->selectClient->nom }} {{ $commande->selectClient->prenom }}</p>
                     <p>{{ $commande->selectClient->adresse }}</p>
-                    <p>{{ $commande->provinceVille->ville_nom }}, {{ $commande->provinceVille->province_nom }}</p>
+                    <p>{{ $commande->ville }}, {{ $province }}</p>
                     <p>{{ $commande->selectClient->codePostal }}</p>
                     <p>{{ $commande->selectClient->telephone }}</p>
                     <p>{{ $commande->selectClient->courriel }} </p>

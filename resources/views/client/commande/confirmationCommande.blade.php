@@ -98,8 +98,8 @@
                 <th width="50%" colspan="2" class="text-end company-data">
                     
                     <span>@lang('admin.date_commande') : {{ $commande->created_at->format('Y-m-d') }}</span> <br>
-                    <span>{{ $commande->selectClient->adresse }}, {{ $commande->provinceVille->ville_nom }},
-                        {{ $commande->provinceVille->province_nom }}</span> <br>
+                    <span>{{ $commande->adresse }}, {{ $commande->ville }},
+                        {{ $province }}</span> <br>
                 </th>
             </tr>
             <tr class="bg-blue">
