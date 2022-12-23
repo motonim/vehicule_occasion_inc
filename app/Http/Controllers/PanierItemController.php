@@ -159,4 +159,44 @@ class PanierItemController extends Controller
       
         return redirect(route('panier.index'));
     }
+
+    public function reserver(){
+        if(Auth::check()) {
+            $userId = Auth::user()->id;
+
+            $items = Cart::content();
+           
+            if($items){
+                $provinces = new Province;
+                $provinces = $provinces->all();
+
+                $voitures = array();
+
+                foreach($items as $item) {
+                    $voiture_id = $item->id;
+
+                    $voitureDB = new Voiture;
+                    $voitureDB = $voitureDB->select()
+                                ->where('id', '=', $voiture_id)
+                                ->get();
+
+                    $voiture = $voitureDB[0];
+
+                    $modele_marque = new Modele;
+                    $modele_marque = $modele_marque->selectModele($voitureDB[0]['modele_id']);
+                    $voiture->modele = $modele_marque[0]['modele_nom'];
+                    $voiture->marque = $modele_marque[0]['marque_nom'];
+                    
+                    array_push($voitures, $voiture);
+                }
+                return view('client/panier.reserver', ['voitures' => $voitures, 'provinces' => $provinces]);
+
+            }
+
+            else {
+                return view('client/panier.index');
+            }
+            
+        }
+    }
 }
