@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Commande;
 use App\Models\Voiture;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Paiement;
@@ -75,7 +76,7 @@ class CommandeController extends Controller
         //Récuperer toute les commandes et les envoyer à page commande paneau admin
         $commandes = Commande::all();
        
-
+        // dd($commandes);
         // Suppression de commande réservé aprés 24h de création
         $dateActuel = Carbon::now()->timestamp; 
         
@@ -162,6 +163,54 @@ class CommandeController extends Controller
            
         }
 
+        if($commande->expedition_id == 3) {
+            $clientNom = $commande->nom;
+            $email = $commande->courriel;
+
+            $prixSousTotal = 0;
+            //Récuperer le prix d'achat
+            foreach($commande->VoitureCommandes as $voitureInfos){
+
+                //Calculer la marge
+                $prix = $voitureInfos->prixAchat * $voitureInfos->marge;
+
+                //Calculer le sous total des voitures dans la commande
+                $prixSousTotal = $prixSousTotal + $prix;
+
+            }
+            //Calculer le prix total (avec tax)
+            $prixTotal = $prixSousTotal * 1.15;
+
+            //Récuperer les information des voiture qui sont dans la commandes
+            $voiture = new Voiture;
+            $voituresCommandes = $voiture->voitureCommande($commande->id);
+            
+            //Chercher province
+            $province = Province::select('nom')
+            ->where('id', '=', $commande->province)
+            ->get();
+
+            $province = $province[0]['nom'];
+
+            Mail::send(
+                'client/commande.confirmationCommande',
+                $data = [
+                    'nom' => $commande->nom,
+                    'prenom' => $commande->prenom,
+                    'commande' => $commande,
+                    'prixSousTotal'=> $prixSousTotal,
+                    'prixTotal'=> $prixTotal,
+                    'voituresCommandes'=> $voituresCommandes,
+                    'province' => $province
+                ],
+    
+                function ($message) use ($clientNom, $email) {
+                    $message->to($email, $clientNom)->subject('Confirmation de commande');
+                }
+            );
+        }
+
+
         // supprimer tous les items dans le panier
         Cart::destroy();
 
@@ -177,6 +226,13 @@ class CommandeController extends Controller
     public function show(Commande $commande)
 
     {
+        //Chercher province
+         $province = Province::select('nom')
+         ->where('id', '=', $commande->province)
+         ->get();
+
+         $province = $province[0]['nom'];
+
         $prixSousTotal = 0;
         //Récuperer le prix d'achat
         foreach($commande->VoitureCommandes as $voitureInfos){
@@ -195,8 +251,8 @@ class CommandeController extends Controller
 
         $voiture = new Voiture;
         $voituresCommandes = $voiture->voitureCommande($commande->id);
-
-        return view('client/commande.detailCommande', compact('commande', 'prixSousTotal', 'prixTotal', 'voituresCommandes'));
+        
+        return view('client/commande.detailCommande', compact('province', 'commande', 'prixSousTotal', 'prixTotal', 'voituresCommandes'));
     }
 
     /**
@@ -213,6 +269,14 @@ class CommandeController extends Controller
 
             return redirect('/');
         }
+
+        //Chercher province
+        $province = Province::select('nom')
+        ->where('id', '=', $commande->province)
+        ->get();
+        $province = $province[0]['nom'];
+        // dd($province);
+
         $prixSousTotal = 0;
         //Récuperer le prix d'achat
         foreach($commande->VoitureCommandes as $voitureInfos){
@@ -236,7 +300,7 @@ class CommandeController extends Controller
         $paiement = new Paiement;
         $paiements = $paiement->selectPaiement();
 
-        return view('admin/commande.detailCommande', compact('commande', 'prixSousTotal', 'prixTotal', 'voituresCommandes','paiements'));
+        return view('admin/commande.detailCommande', compact('province', 'commande', 'prixSousTotal', 'prixTotal', 'voituresCommandes','paiements'));
     }
 
     /**
@@ -262,9 +326,9 @@ class CommandeController extends Controller
 
 
         //Envoie de la confirmation commande par émail
-        $clientNom = $commande->selectClient->nom;
-        $clientPrenom = $commande->selectClient->prenom;
-        $email = $commande->selectClient->courriel;
+        $clientNom = $commande->nom;
+        $clientPrenom = $commande->prenom;
+        $email = $commande->courriel;
 
         $prixSousTotal = 0;
         //Récuperer le prix d'achat
@@ -307,6 +371,12 @@ class CommandeController extends Controller
 
         $commande = Commande::find($commande);
 
+        //Chercher province
+        $province = Province::select('nom')
+        ->where('id', '=', $commande->province)
+        ->get();
+        $province = $province[0]['nom'];
+
        //Récuperer le prix d'achat
        $prixSousTotal = 0;
        foreach($commande->VoitureCommandes as $voitureInfos){
@@ -317,7 +387,7 @@ class CommandeController extends Controller
         //Calculer le sous total des voitures dans la commande
         $prixSousTotal = $prixSousTotal + $prix;
 
-    }
+        }
     //Calculer le prix total (avec tax)
     $prixTotal = $prixSousTotal * 1.15;
 
@@ -326,7 +396,7 @@ class CommandeController extends Controller
     $voituresCommandes = $voiture->voitureCommande($commande->id);
 
 
-    $pdfFacture = PDF::loadView('client/commande.facture',['commande' => $commande, 'prixSousTotal' => $prixSousTotal, 'prixTotal'=>$prixTotal ,'voituresCommandes'=>$voituresCommandes]);
+    $pdfFacture = PDF::loadView('client/commande.facture',['province' => $province, 'commande' => $commande, 'prixSousTotal' => $prixSousTotal, 'prixTotal'=>$prixTotal ,'voituresCommandes'=>$voituresCommandes]);
 
     return $pdfFacture->download('Facture-'.$commande->numeroDeCommande .'.pdf');
     //return $pdfFacture->stream('Facture-'.$commande->numeroDeCommande .'.pdf');
