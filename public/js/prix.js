@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
    }
 
    function updateCartTotal() {
+      let paypalTotalPrix = document.querySelector('#payer-maintenat');
       let cartItemContainer = document.querySelectorAll('[data-js-voiture-prix]')
       let sousTotal = document.querySelector('[data-js-sous-total]')
       let fraisLivraison = document.querySelector('[data-js-frais-livraison]')
@@ -33,6 +34,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
       impotTVQ.innerText = totalTVQ
       let totalFinal = sum + parseFloat(totalTPS) + parseFloat(totalTVQ)
       totalPrix.innerText = totalFinal.toFixed(2)
+      paypalTotalPrix.value = totalFinal.toFixed(2)
    }
 
 })
