@@ -27,7 +27,6 @@
                @endforeach
             @endif
          </div>
-
       </div>
       <div class="produit__panier__section col-12 col-lg-4">
          <div class="produit__panier__section__side col border--gray border-radius__5px p-2 ">
@@ -68,6 +67,9 @@
          <div class="produit__panier__section__side col-12 col-md-6 col-lg-12 px-0">
             <div class="border--gray border-radius__5px p-2 position-sticky">
                <h2 class='p-2'>@lang('commande.sommaire')</h2>
+               @if(count($voitures) < 1)
+                  <p class="py-5 px-2">@lang('commande.indisponible')</p>           
+               @else
                <div class="p-2 d-flex justify-content-between">
                   <div class="produit__panier__sommaire__head">
                      <p>@lang('commande.total_produits')</p>
@@ -86,14 +88,17 @@
                      <p><span data-js-total-prix></span> $</p>
                   </div>
                </div>
-               <form action="{{ route('commande.paypal') }}" method="POST">
+               
+               <form action="{{ route('commande.paypal') }}" method="POST" data-js-panier-btn-payer>
                   @csrf
                   <input type="hidden" name="prix" id="payer-maintenat" value="">
-                  <button type="submit">pay with paypal</button>
+                  <button type="submit" class="d-flex justify-content-center align-items-center my-2 btn__commander w-100 text-bold" >@lang('commande.payer_avec')
+                     <!-- PayPal Logo --><table class="ml-2" border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" title="PayPal" onclick="javascript:window.open('https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Grey_PayPal_Pill_Button.png" alt="PayPal" /></a></td></tr></table><!-- PayPal Logo -->
+                  </button>
                </form>
-               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-livraison>@lang('commande.payer')</button>
-               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-collection>@lang('commande.payer')</button>
-               <button class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-reservation>@lang('commande.reserver')</button>
+      
+               <a href="{{ route('panier.reserver') }}" class="my-2 btn__commander w-100 text-bold" data-js-panier-btn-reservation>@lang('commande.reserver')</a>
+               @endif
             </div>
          </div>
       </div>
