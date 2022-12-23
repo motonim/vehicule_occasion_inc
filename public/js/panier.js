@@ -5,17 +5,10 @@ window.addEventListener('DOMContentLoaded', (e) => {
    const btnExpCollection = document.querySelector('[data-js-expedition-collection]');
    const btnExpReservation = document.querySelector('[data-js-expedition-reservation]');
    const btnPanierReservation = document.querySelector('[data-js-panier-btn-reservation]');
-   const btnPanierLivraison = document.querySelector('[data-js-panier-btn-livraison]');
-   const btnPanierCollection = document.querySelector('[data-js-panier-btn-collection]');
-   const formulaireReservation = document.querySelector('[data-js-formulaire-reservation]');
-   const formulaireLivraison = document.querySelector('[data-js-formulaire-livraison]');
-   const formulaireCollection = document.querySelector('[data-js-formulaire-collection]');
+   const btnPanierPayer = document.querySelector('[data-js-panier-btn-payer]');
+   
 
    btnPanierReservation.style.display = 'none';
-   btnPanierCollection.style.display = 'none';
-   formulaireReservation.style.display = 'none';
-   formulaireLivraison.style.display = 'none';
-   formulaireCollection.style.display = 'none';
    document.querySelector('[data-js-frais-livraison]').innerText = '150 $'
 
    // Page Panier expedition options
@@ -24,19 +17,16 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
       if (btnExpLivraison.checked) {
          btnPanierReservation.style.display = 'none';
-         btnPanierCollection.style.display = 'none';
-         btnPanierLivraison.style.display = 'block';
+         btnPanierPayer.style.display = 'block';
          livraison = true;
 
       } else if (btnExpCollection.checked) {
          btnPanierReservation.style.display = 'none';
-         btnPanierLivraison.style.display = 'none';
-         btnPanierCollection.style.display = 'block';
+         btnPanierPayer.style.display = 'block';
          livraison = false;
 
       } else {
-         btnPanierLivraison.style.display = 'none';
-         btnPanierCollection.style.display = 'none';
+         btnPanierPayer.style.display = 'none';
          btnPanierReservation.style.display = 'block';
          livraison = false;
 
@@ -55,35 +45,5 @@ window.addEventListener('DOMContentLoaded', (e) => {
       radio.addEventListener('click', cliquerSurRadio);
    });
 
-   btnPanierLivraison.addEventListener('click', () => {
-      formulaireReservation.style.display = 'none';
-      formulaireCollection.style.display = 'none';
-      formulaireLivraison.style.display = 'block';
-      formulaireLivraison.classList.add('slide-top');
-      btnPanierLivraison.classList.add('btn_disabled');
-      btnPanierReservation.classList.remove('btn_disabled');
-      btnPanierCollection.classList.remove('btn_disabled');
-
-   })
-
-   btnPanierCollection.addEventListener('click', () => {
-      formulaireLivraison.style.display = 'none';
-      formulaireReservation.style.display = 'none';
-      formulaireCollection.style.display = 'block';
-      formulaireCollection.classList.add('slide-top');
-      btnPanierCollection.classList.add('btn_disabled');
-      btnPanierReservation.classList.remove('btn_disabled');
-      btnPanierLivraison.classList.remove('btn_disabled');
-   })
-
-   btnPanierReservation.addEventListener('click', () => {
-      formulaireCollection.style.display = 'none';
-      formulaireLivraison.style.display = 'none';
-      formulaireReservation.style.display = 'block';
-      formulaireReservation.classList.add('slide-top');
-      btnPanierReservation.classList.add('btn_disabled');
-      btnPanierLivraison.classList.remove('btn_disabled');
-      btnPanierCollection.classList.remove('btn_disabled');
-   })
 
 })
